@@ -1,25 +1,34 @@
-// use express and sessions
+// set up and configure express server
 const express = require('express');
-const session = require('express-session');
-
-// initialize express app, set port (compatible with heroku)
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// import settings from .env
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-// bring in helpers
-const helpers = require('./utils/helpers');
+// set up port
+const PORT = process.env.PORT || 3001
 
-// configure express server
+// initialize server
+const app = express();
+
+// make sure we can use JSON
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-// tell express to use controller files 
+// send all traffic to controllers files to route it appropriately
 app.use(require('./routes'));
 
-// start server, sync with database
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-});
+// try connecting to DB, if it succeeds start server, else display error message
+mongoose
+    .connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+        })
+    .then(() => {
+        console.log('Connected to MONGO DB ATLAS...')
+
+        app.listen(PORT, () => {
+            console.log(`App running on port ${PORT}!`);
+        })
+    })
+    .catch((err) => {
+        console.log(err);
+    });
