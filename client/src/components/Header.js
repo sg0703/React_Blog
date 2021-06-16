@@ -13,8 +13,8 @@ const Header = () => {
             <a className="item">
                 Create
             </a>
-        <div class="right menu">
-            <a class="ui item">
+        <div className="right menu">
+            <a className="ui item">
             Sign In
             </a>
         </div>
