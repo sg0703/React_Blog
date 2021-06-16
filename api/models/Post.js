@@ -13,7 +13,10 @@ const PostSchema = new Schema({
     userId: {
         type: Number, 
         require: true
-    }
+    },
+},
+{
+    timestamps: true
 });
 
 module.exports = mongoose.model('Post', PostSchema);
