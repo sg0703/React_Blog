@@ -5,3 +5,17 @@ export const fetchPosts = () => async (dispatch) => {
 
     dispatch({ type: 'FETCH_POSTS', payload: res.data });
 }
+
+export const signIn = (userInfo) => {
+    /*** ADD IN EMAIL LATER ***/
+    return {
+        type: 'LOG_IN',
+        payload: userInfo
+    }
+}
+
+export const signOut = () => {
+    return {
+        type: 'LOG_OUT'
+    }
+}

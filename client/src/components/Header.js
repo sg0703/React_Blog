@@ -1,25 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Header = () => {
+import GoogleLogin from './GoogleLogin'
+
+const Header = ({isSignedIn}) => {
+    const renderUserLinks = () => {
+        if(isSignedIn) {
+            return(
+                <>
+                <Link to="/posts" className="item">
+                    Your Posts
+                </Link>
+                <Link to="/create" className="item">
+                    Create
+                </Link>
+                </>
+            );
+        }
+    }
+
     return(
         <div className="ui secondary pointing menu">
             <Link to="/" className="item">
                 Home
             </Link>
-            <Link to="/posts" className="item">
-                Your Posts
-            </Link>
-            <Link to="/create" className="item">
-                Create
-            </Link>
+            {renderUserLinks()}
         <div className="right menu">
-            <Link to="/signin" className="ui item">
-            Sign In
-            </Link>
+            <GoogleLogin />
         </div>
         </div>
     );
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return { isSignedIn: state.auth.isSignedIn };
+}
+
+export default connect(mapStateToProps, {})(Header);
