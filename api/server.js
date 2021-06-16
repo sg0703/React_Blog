@@ -1,5 +1,6 @@
 // set up and configure express server
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -9,9 +10,13 @@ const PORT = process.env.PORT || 3001
 // initialize server
 const app = express();
 
+// enable cors?
+app.use(cors());
+
 // make sure we can use JSON
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+//app.use(express.json());
+
 
 // send all traffic to controllers files to route it appropriately
 app.use(require('./routes'));

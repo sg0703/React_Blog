@@ -2,19 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
 
+import PostList from './PostList';
+
 class AllPosts extends React.Component {
     componentDidMount() {
         // code in here to fetch all posts from API (still have to build that!)
-        // this.props.fetchPosts();
+        this.props.fetchPosts();
     }
 
     render() {
         return(
             <div>
                 <h1>All posts</h1>
+                <div className="ui celled list">
+                    <PostList posts={this.props.posts} />
+                </div>
             </div>
         ); 
     }
 }
 
-export default connect(null, {})(AllPosts);
+const mapStateToProps = (state) => {
+    return {
+        posts: Object.values(state.posts)
+    }
+}
+
+export default connect(mapStateToProps, { fetchPosts })(AllPosts);
