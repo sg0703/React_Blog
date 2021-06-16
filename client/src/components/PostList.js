@@ -7,7 +7,7 @@ const PostList = ({posts}) => {
     if(posts) {
         return posts.map(post => {
             return(
-                <div className="item" key={post._id}>
+                <div className="item" key={post.createdAt}>
                     <div className="content">
                         {post.title}
                     </div>
