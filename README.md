@@ -17,7 +17,8 @@ This app will use React, React Router, Redux and OAuth for the client side. I am
 - [License](#license)
 - [Questions](#questions)
 
-![work in progress](screen1.png)
+![signed in](screen1.png)
+![signed out](screen2.png)
 
 ## Installation
 
