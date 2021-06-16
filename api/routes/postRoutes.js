@@ -3,6 +3,10 @@ const Post = require('../models/Post'); // put in path to mongoose model here
 
 /** DEFINE ROUTES BELOW */
 
+router.get('/', (req,res) => {
+    
+})
+
 router.post('/', (req,res) => {
     let post = new Post(req.body);
 
@@ -36,6 +40,17 @@ router.put('/:id', async (req,res) => {
     }
     else {
         return res.json(updatedPost);
+    }
+});
+
+router.delete('/:id', async (req,res) => {
+    let deletePost = await Post.deleteOne({ _id: req.params.id });
+
+    if(!deletePost) {
+        return res.json({ message: 'Error: post not found!' });
+    }
+    else {
+        return res.json(deletePost);
     }
 });
 
