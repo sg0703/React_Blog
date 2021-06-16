@@ -17,6 +17,8 @@ This app will use React, React Router, Redux and OAuth for the client side. I am
 - [License](#license)
 - [Questions](#questions)
 
+![work in progress](screen1.png)
+
 ## Installation
 
 The project is currently under development. Keep checking back for updates, and for the announcement when it is complete.
