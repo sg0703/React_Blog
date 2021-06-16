@@ -3,8 +3,24 @@ const Post = require('../models/Post'); // put in path to mongoose model here
 
 /** DEFINE ROUTES BELOW */
 
-router.get('/', (req,res) => {
-    
+router.get('/all', async (req,res) => {
+    let allPosts = await Post.find({}).limit(20);
+
+    if(!allPosts) {
+        return res.json({ message: 'Error finding posts!' });
+    }
+
+    return res.json(allPosts);
+})
+
+router.get('/one/:id', async (req,res) => {
+    let onePost = await Post.findOne({_id: req.params.id});
+
+    if(!onePost) {
+        return res.json({ message: 'Error finding post with that ID!' });
+    }
+
+    return res.json(onePost);
 })
 
 router.post('/', (req,res) => {
