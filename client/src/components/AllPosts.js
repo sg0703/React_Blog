@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchPosts } from '../actions';
 
 class AllPosts extends React.Component {
     componentDidMount() {
-        // code in here to fetch all posts from DB
+        // code in here to fetch all posts from API (still have to build that!)
+        // this.props.fetchPosts();
     }
 
     render() {
