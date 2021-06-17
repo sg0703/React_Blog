@@ -47,11 +47,15 @@ export const writePost = (postData) => async (dispatch, getState) => {
     history.push('/');
 }
 
-export const editPost = (postId, newPost) => async dispatch => {
-    const res = await db.patch(`/posts/${postId}`, newPost);
+export const editPost = (postId, newPost) => async (dispatch, getState) => {
+    const { token, userId } = getState().auth.userInfo;
+
+    const sendData = { ...newPost, token, userId };
+
+    const res = await db.put(`/update/${postId}`, sendData);
 
     dispatch({ type: 'EDIT_POST', payload: res.data });
 
     /** NAVIGATION REDIRECT */
-    history.push('/');
+    history.push('/posts');
 }

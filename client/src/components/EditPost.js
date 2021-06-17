@@ -15,10 +15,14 @@ const EditPost = (props) => {
         setContent(props.post.content);
     }, [props]);
 
-
     // when form is submitted, send to action creator to update store and query API to update DB
-    const onSubmit = (newContent) => {
-        props.editPost(props.match.params.id, newContent);
+    const onSubmit = (e) => {
+        e.preventDefault();
+        
+        let postInfo = { title, content };
+        console.log(postInfo)
+        props.editPost(props.match.params.id, postInfo);
+
     }
 
     const renderError = () => {
@@ -50,8 +54,8 @@ const EditPost = (props) => {
                 onChange={(e) => setContent(e.target.value)}
             />
             {renderError()}
-            <Link to="/posts" className="ui button">Go Back</Link>
-            <button className="ui button" type="submit">Update</button>
+            <Link to="/posts" className="ui button">Back</Link>
+            <button className="ui button" onClick={onSubmit}>Update</button>
         </form>
         </div>
     );
@@ -59,7 +63,7 @@ const EditPost = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { post: state.posts[ownProps.match.params.id] }
+    return { post: state.user_posts[ownProps.match.params.id] }
 }
 
 export default connect(mapStateToProps, { fetchPost, editPost })(EditPost);
