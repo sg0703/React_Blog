@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUserPosts } from '../actions';
 
-import UserPostList from './PostList';
+import UserPostList from './UserPostList';
 
 class UserPosts extends React.Component {
     componentDidMount() {
@@ -12,9 +12,9 @@ class UserPosts extends React.Component {
     render() {
         return(
             <div className="ui container">
-                <h1>Your posts</h1>
+                <h1>Your posts test</h1>
                 <div className="ui celled list">
-                    <UserPostList posts={this.props.user_posts} />
+                    <UserPostList user_posts={this.props.user_posts} />
                 </div>
             </div>
         ); 

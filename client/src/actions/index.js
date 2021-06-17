@@ -1,10 +1,18 @@
 import db from '../apis/db'; // this file will set up axios connection to API
 import history from '../history';
 
+// get all posts
 export const fetchPosts = () => async (dispatch) => {
     const res = await db.get('/all');
 
     dispatch({ type: 'FETCH_POSTS', payload: res.data });
+}
+
+// get a single post
+export const fetchPost = (postId) => async (dispatch) => {
+    const res = await db.get(`/one/${postId}`);
+
+    dispatch({ type: 'FETCH_POST', payload: res.data });
 }
 
 export const fetchUserPosts = (userId) => async (dispatch) => {
@@ -36,5 +44,14 @@ export const writePost = (postData) => async (dispatch, getState) => {
 
     dispatch({ type: 'WRITE_POST' });
 
+    history.push('/');
+}
+
+export const editPost = (postId, newPost) => async dispatch => {
+    const res = await db.patch(`/posts/${postId}`, newPost);
+
+    dispatch({ type: 'EDIT_POST', payload: res.data });
+
+    /** NAVIGATION REDIRECT */
     history.push('/');
 }

@@ -4,6 +4,7 @@ import Header from './Header';
 import AllPosts from './AllPosts';
 import UserPosts from './UserPosts';
 import Create from './Create';
+import EditPost from './EditPost';
 
 import history from '../history';
 
@@ -15,6 +16,7 @@ const App = () => {
                 <div>
                     <Route path="/" exact component={ AllPosts } />
                     <Route path="/posts" exact component={ UserPosts } />
+                    <Route path="/posts/edit/:id" exact component={ EditPost } />
                     <Route path="/create" exact component={ Create } />
                 </div>
             </Router>

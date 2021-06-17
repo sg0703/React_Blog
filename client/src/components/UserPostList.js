@@ -1,11 +1,26 @@
 import React from 'react';
 import { formatDate } from '../helpers/date';
+import { Link } from 'react-router-dom';
 
-const UserPostList = ({posts}) => {
-    if(posts) {
-        return posts.map(post => {
+const UserPostList = ({user_posts}) => {
+    if(user_posts) {
+        return user_posts.map(post => {
             return(
                 <div className="item" key={post.createdAt}>
+                    <div className="right floated content">
+                        <Link 
+                            to={`/posts/edit/${post._id}`}
+                            className="ui button"
+                        >
+                        Edit
+                        </Link>
+                        <Link 
+                            to={`/posts/delete/${post._id}`}
+                            className="ui button"
+                        >
+                        Delete
+                        </Link>
+                    </div>
                     <div className="content">
                         {post.title} 
                         <h5>by {post.userActualName} on 
