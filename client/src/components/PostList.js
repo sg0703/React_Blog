@@ -3,7 +3,6 @@ import React from 'react';
 // using a functional component to build a list
 
 const PostList = ({posts}) => {
-    console.log(posts)
     if(posts) {
         return posts.map(post => {
             return(

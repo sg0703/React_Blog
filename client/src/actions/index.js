@@ -26,10 +26,9 @@ export const writePost = (postData) => async (dispatch, getState) => {
 
     const sendData = { ...postData, userId, userEmail, userActualName, token };
 
-    const res = await db.post('/', sendData);
-    console.log(sendData);
+    await db.post('/', sendData);
 
-    dispatch({ type: 'WRITE_POST', payload: res.data });
+    dispatch({ type: 'WRITE_POST' });
 
     history.push('/');
 }

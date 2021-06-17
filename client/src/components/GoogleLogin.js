@@ -25,15 +25,15 @@ class GoogleLogin extends React.Component {
 
     onAuthChange = (isSignedIn) => {
         if(isSignedIn) {
-            /** FOR DEBUGGING */
+            // create object with all of users info
             const userInfo = {
                 token: this.auth.currentUser.get().getAuthResponse().id_token,
                 userId: this.auth.currentUser.get().getId(),
                 userEmail: this.auth.currentUser.get().getBasicProfile().getEmail(),
                 userActualName: this.auth.currentUser.get().getBasicProfile().getName()
             }
-            console.log(userInfo.token)
-            // sign in user
+            
+            // send info to redux store
             this.props.signIn(userInfo);
         }
         else {
