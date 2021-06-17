@@ -2,6 +2,8 @@ const router = require('express').Router();
 const Post = require('../models/Post'); // put in path to mongoose model here
 const authUtil = require('../utils/auth');
 
+const _ = require('lodash');
+
 router.get('/all', async (req,res) => {
     let allPosts = await Post.find({}).limit(20);
 
@@ -23,15 +25,14 @@ router.get('/one/:id', async (req,res) => {
 })
 
 router.post('/', authUtil, (req,res) => {
-    let post = new Post(req.body);
-
-    console.log(req.body)
+    let post = new Post(_.omit(req.body, ['token'])); // remove token from body of post
 
     post.save((err,postRes) => {
         if(err) return res.json(err);
-        console.log(req.body);
-        console.log('Post added to database!');
-        res.json(postRes);
+
+
+        console.log(postRes)
+        return res.json(postRes);
     })
 }); 
 
