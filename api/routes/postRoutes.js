@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Post = require('../models/Post'); // put in path to mongoose model here
+const authUtil = require('../utils/auth');
 
 router.get('/all', async (req,res) => {
     let allPosts = await Post.find({}).limit(20);
@@ -21,7 +22,7 @@ router.get('/one/:id', async (req,res) => {
     return res.json(onePost);
 })
 
-router.post('/', (req,res) => {
+router.post('/', authUtil, (req,res) => {
     let post = new Post(req.body);
 
     console.log(req.body)
@@ -34,7 +35,7 @@ router.post('/', (req,res) => {
     })
 }); 
 
-router.put('/:id', async (req,res) => {
+router.put('/:id', authUtil, async (req,res) => {
     let currentPost = await Post.findOne({ _id: req.params.id });
 
     if(!currentPost) {
@@ -59,7 +60,7 @@ router.put('/:id', async (req,res) => {
     }
 });
 
-router.delete('/:id', async (req,res) => {
+router.delete('/:id', authUtil, async (req,res) => {
     let deletePost = await Post.deleteOne({ _id: req.params.id });
 
     if(!deletePost) {
