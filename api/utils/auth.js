@@ -6,7 +6,11 @@ const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const withAuth = (req, res, next) => {
     console.log('Authenticating user...');
-    
+
+    if(!req.body.token) {
+        return res.json({message: "DENIED! MUST BE AUTHENTICATED!"});
+    }
+
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: req.body.token,
@@ -14,13 +18,16 @@ const withAuth = (req, res, next) => {
         });
     
         const payload = ticket.getPayload();
-        //const userid = payload['sub'];
-        //const name = payload['name'];
-        //const email = payload['email'];
         console.log('User authenticated!');
         return next();
     }
-    verify().catch(console.error);
+
+    try {
+        verify();
+    }
+    catch {
+        return res.json({message: "COULD NOT AUTHENTICATE!"});
+    }
 
 };
       
