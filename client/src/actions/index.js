@@ -7,6 +7,12 @@ export const fetchPosts = () => async (dispatch) => {
     dispatch({ type: 'FETCH_POSTS', payload: res.data });
 }
 
+export const fetchUserPosts = (userId) => async (dispatch) => {
+    const res = await db.get(`/all/${userId}`);
+
+    dispatch({ type: 'FETCH_USER_POSTS', payload: res.data });
+}
+
 export const signIn = (userInfo) => {
     /*** ADD IN EMAIL LATER ***/
     return {

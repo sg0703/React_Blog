@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatDate } from '../helpers/date';
 
-const PostList = ({posts}) => {
+const UserPostList = ({posts}) => {
     if(posts) {
         return posts.map(post => {
             return(
@@ -25,4 +25,4 @@ const PostList = ({posts}) => {
     }
 }
 
-export default PostList;
+export default UserPostList;

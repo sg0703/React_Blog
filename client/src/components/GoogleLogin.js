@@ -55,7 +55,7 @@ class GoogleLogin extends React.Component {
         }
         else {
             return(
-                <button className="google button" onClick={this.auth.signIn}>
+                <button className="ui google button" onClick={this.auth.signIn}>
                     <i className="google icon" />
                     Sign In
                 </button>

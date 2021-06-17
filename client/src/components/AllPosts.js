@@ -6,7 +6,6 @@ import PostList from './PostList';
 
 class AllPosts extends React.Component {
     componentDidMount() {
-        // code in here to fetch all posts from API (still have to build that!)
         this.props.fetchPosts();
     }
 
