@@ -12,7 +12,7 @@ class AllPosts extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="ui container">
                 <h1>All posts</h1>
                 <div className="ui celled list">
                     <PostList posts={this.props.posts} />
