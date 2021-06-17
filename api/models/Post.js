@@ -14,6 +14,14 @@ const PostSchema = new Schema({
         type: Number, 
         require: true
     },
+    userEmail: {
+        type: String,
+        require: false
+    },
+    userActualName: {
+        type: String,
+        require: false
+    }
 },
 {
     timestamps: true

@@ -24,9 +24,11 @@ router.get('/one/:id', async (req,res) => {
 router.post('/', (req,res) => {
     let post = new Post(req.body);
 
+    console.log(req.body)
+
     post.save((err,postRes) => {
         if(err) return res.json(err);
-
+        console.log(req.body);
         console.log('Post added to database!');
         res.json(postRes);
     })

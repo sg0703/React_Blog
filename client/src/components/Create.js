@@ -35,11 +35,13 @@ const Create = ({writePost}) => {
             <label>Enter Title</label>
             <input 
                 name="title" 
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
             <label>Enter Post</label>
             <textarea 
                 name="content" 
+                value={content}
                 onChange={(e) => setContent(e.target.value)}
             />
             {renderError()}
