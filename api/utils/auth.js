@@ -5,7 +5,8 @@ const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
 
 const withAuth = (req, res, next) => {
-
+    console.log('Authenticating user...');
+    
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: req.body.token,

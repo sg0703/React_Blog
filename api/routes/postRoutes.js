@@ -4,8 +4,20 @@ const authUtil = require('../utils/auth');
 
 const _ = require('lodash');
 
+// get all posts
 router.get('/all', async (req,res) => {
     let allPosts = await Post.find({}).limit(20);
+
+    if(!allPosts) {
+        return res.json({ message: 'Error finding posts!' });
+    }
+
+    return res.json(allPosts);
+})
+
+// get a specific users posts
+router.get('/all/:id', async (req,res) => {
+    let allPosts = await Post.find({ 'userId' : req.params.id });
 
     if(!allPosts) {
         return res.json({ message: 'Error finding posts!' });
@@ -36,19 +48,20 @@ router.post('/', authUtil, (req,res) => {
     })
 }); 
 
-router.put('/:id', authUtil, async (req,res) => {
-    let currentPost = await Post.findOne({ _id: req.params.id });
-
+router.put('/update/:id', authUtil, async (req,res) => {
+    let currentPost = await Post.findById(req.params.id);
+    console.log(currentPost)
     if(!currentPost) {
         return res.json({ message: 'Error: post not found!' });
     }
 
     // pull title and content out of request
-    const {title,content} = req.body;
+    const {title,content,userId} = req.body;
 
     // update entry
     currentPost.title = title;
     currentPost.content = content;
+    currentPost.userId = userId;
 
     // save update in DB
     let updatedPost = await currentPost.save();
