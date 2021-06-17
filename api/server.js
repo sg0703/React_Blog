@@ -1,6 +1,5 @@
 // set up and configure express server
 const express = require('express');
-const session = require('express-session');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -10,17 +9,6 @@ const PORT = process.env.PORT || 3001
 
 // initialize server
 const app = express();
-
-// configure session
-const sess = {
-    resave: true,
-    secret: process.env.SESSION_SECRET,
-    cookie: {},
-    saveUninitialized: true,
-    expires: 300000,
-};
-
-app.use(session(sess));
 
 // enable cors?
 app.use(cors());
