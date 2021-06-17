@@ -22,10 +22,9 @@ export const signOut = () => {
 }
 
 export const writePost = (postData) => async (dispatch, getState) => {
-    const { userInfo } = getState().auth;
-    const { userId, userEmail, userActualName } = userInfo;
+    const { token, userId, userEmail, userActualName } = getState().auth.userInfo;
 
-    const sendData = { ...postData, userId, userEmail, userActualName };
+    const sendData = { ...postData, userId, userEmail, userActualName, token };
 
     const res = await db.post('/', sendData);
     console.log(sendData);

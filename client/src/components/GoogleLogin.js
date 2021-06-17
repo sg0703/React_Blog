@@ -25,13 +25,14 @@ class GoogleLogin extends React.Component {
 
     onAuthChange = (isSignedIn) => {
         if(isSignedIn) {
-            // get user info from Google
+            /** FOR DEBUGGING */
             const userInfo = {
+                token: this.auth.currentUser.get().getAuthResponse().id_token,
                 userId: this.auth.currentUser.get().getId(),
                 userEmail: this.auth.currentUser.get().getBasicProfile().getEmail(),
                 userActualName: this.auth.currentUser.get().getBasicProfile().getName()
             }
-            console.log(userInfo)
+            console.log(userInfo.token)
             // sign in user
             this.props.signIn(userInfo);
         }
@@ -54,7 +55,7 @@ class GoogleLogin extends React.Component {
         }
         else {
             return(
-                <button className="ui google button" onClick={this.auth.signIn}>
+                <button className="google button" onClick={this.auth.signIn}>
                     <i className="google icon" />
                     Sign In
                 </button>
@@ -68,7 +69,9 @@ class GoogleLogin extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { isSignedIn: state.auth.isSignedIn };
+    return { 
+        isSignedIn: state.auth.isSignedIn,
+    };
 }
 
 export default connect(mapStateToProps, { signIn, signOut })(GoogleLogin);
