@@ -4,7 +4,7 @@
 
 ## Description
 
-React Blog is a full stack Mongo, Express, React and Node (MERN) application that allows users to log in with their Google accounts and post blog posts to a communal homepage. The homepage displays the most recent 20 blog posts from all users.
+React Blog is a full stack Mongo, Express, React and Node (MERN) application that allows users to log in with their Google accounts and post blog posts to a shared homepage. The homepage displays the most recent 20 blog posts from all users.
 
 Key API endpoints are secured by using token verification with the Google API Client Library. Some GET routes are intentionally left open and will be documented in the near future.
 
