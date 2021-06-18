@@ -8,14 +8,17 @@ React Blog is a full stack Mongo, Express, React and Node (MERN) application tha
 
 Key API endpoints are secured by using token verification with the Google API Client Library. Some GET routes are intentionally left open and will be documented in the near future.
 
-This app uses the following libraries and services, in addition to the basic MERN stack:
+This app uses the following libraries, services, and dev tools in addition to the basic MERN stack:
 
-- Redux
-- MongoDB Atlas
-- Mongoose
-- Lodash
-- Google API Client Library (Node.js version) [more here](https://developers.google.com/identity/sign-in/web/backend-auth)
-- Google Sign-In (OAuth 2.0) [more here](https://developers.google.com/identity/sign-in/web/sign-in)
+- [Redux](https://www.npmjs.com/package/redux)
+- [React-Redux](https://www.npmjs.com/package/react-redux)
+- [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
+- [Redux DevTools Extension (Chrome)](https://www.npmjs.com/package/redux-devtools-extension)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Lodash](https://www.npmjs.com/package/lodash)
+- [Google API Client Library (Node.js version)](https://developers.google.com/identity/sign-in/web/backend-auth)
+- [Google Sign-In (OAuth 2.0)](https://developers.google.com/identity/sign-in/web/sign-in)
 
 ## Table of Contents
 
