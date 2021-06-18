@@ -4,25 +4,24 @@ import { connect } from 'react-redux';
 import { fetchPost, editPost } from '../actions';
 
 const EditPost = (props) => {
-    // set state
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-
     // populate form with existing values for post 
     useEffect(() => {
         props.fetchPost(props.match.params.id);
-        setTitle(props.post.title);
-        setContent(props.post.content);
-    }, [props]);
+    });
+
+    // pull post info from redux, create local state for title and content (for form validation)
+    const [title, setTitle] = useState(props.post.title);
+    const [content, setContent] = useState(props.post.content);
 
     // when form is submitted, send to action creator to update store and query API to update DB
     const onSubmit = (e) => {
         e.preventDefault();
         
         let postInfo = { title, content };
-        console.log(postInfo)
-        props.editPost(props.match.params.id, postInfo);
 
+        if(title !== '' && content !== '') {
+            props.editPost(props.match.params.id, postInfo);
+        }
     }
 
     const renderError = () => {
@@ -63,7 +62,7 @@ const EditPost = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return { post: state.user_posts[ownProps.match.params.id] }
+    return { post: state.posts[ownProps.match.params.id] }
 }
 
 export default connect(mapStateToProps, { fetchPost, editPost })(EditPost);

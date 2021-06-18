@@ -15,12 +15,6 @@ export const fetchPost = (postId) => async (dispatch) => {
     dispatch({ type: 'FETCH_POST', payload: res.data });
 }
 
-export const fetchUserPosts = (userId) => async (dispatch) => {
-    const res = await db.get(`/all/${userId}`);
-
-    dispatch({ type: 'FETCH_USER_POSTS', payload: res.data });
-}
-
 export const signIn = (userInfo) => {
     /*** ADD IN EMAIL LATER ***/
     return {
@@ -55,6 +49,17 @@ export const editPost = (postId, newPost) => async (dispatch, getState) => {
     const res = await db.put(`/update/${postId}`, sendData);
 
     dispatch({ type: 'EDIT_POST', payload: res.data });
+
+    /** NAVIGATION REDIRECT */
+    history.push('/posts');
+}
+
+export const deletePost = (postId) => async (dispatch, getState) => {
+    const { token } = getState().auth.userInfo;
+
+    await db.post(`/delete/${postId}`, { token: token });
+
+    dispatch({ type: 'DELETE_POST', payload: postId });
 
     /** NAVIGATION REDIRECT */
     history.push('/posts');

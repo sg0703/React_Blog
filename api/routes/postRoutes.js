@@ -75,7 +75,7 @@ router.put('/update/:id', authUtil, async (req,res) => {
 });
 
 
-router.delete('/', async (req,res) => {
+router.delete('/deleteThemAll', async (req,res) => {
     let deletePost = await Post.find().limit(20).sort({_id: 1}).deleteMany({});
 
     if(!deletePost) {
@@ -86,8 +86,8 @@ router.delete('/', async (req,res) => {
     }
 });
 
-router.delete('/:id', authUtil, async (req,res) => {
-    let deletePost = await Post.deleteOne({ _id: req.params.id });
+router.post('/delete/:id', authUtil, async (req,res) => {
+    let deletePost = await Post.deleteOne({ "_id": req.params.id });
 
     if(!deletePost) {
         return res.json({ message: 'Error: post not found!' });

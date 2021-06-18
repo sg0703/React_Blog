@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUserPosts } from '../actions';
+import { fetchPosts } from '../actions';
 
 import UserPostList from './UserPostList';
 
 class UserPosts extends React.Component {
     componentDidMount() {
-        this.props.fetchUserPosts(this.props.userId);
+        this.props.fetchPosts(this.props.userId);
     }
 
     render() {
@@ -14,7 +14,7 @@ class UserPosts extends React.Component {
             <div className="ui container">
                 <h1>Your posts</h1>
                 <div className="ui celled list">
-                    <UserPostList user_posts={this.props.user_posts} />
+                    <UserPostList posts={this.props.posts} userEmail={this.props.userEmail} />
                 </div>
             </div>
         ); 
@@ -23,9 +23,9 @@ class UserPosts extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        user_posts: Object.values(state.user_posts),
-        userId: state.auth.userInfo.userId
+        posts: Object.values(state.posts),
+        userEmail: state.auth.userInfo.userEmail
     }
 }
 
-export default connect(mapStateToProps, { fetchUserPosts })(UserPosts);
+export default connect(mapStateToProps, { fetchPosts })(UserPosts);

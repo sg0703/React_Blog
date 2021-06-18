@@ -12,6 +12,8 @@ export default (state = {}, action) => {
             return { ...state, [action.payload._id]: action.payload };
         case 'WRITE_POST':
             return { ...state };
+        case 'DELETE_POST':
+            return _.omit(state, action.payload);
         default:
             return state;
     }
