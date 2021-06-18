@@ -8,7 +8,7 @@ const authUtil = require('../utils/auth');
 
 // get all posts
 router.get('/all', async (req,res) => {
-    let allPosts = await Post.find({}, '-userId').limit(20);
+    let allPosts = await Post.find({}, '-userId').sort({ _id: -1 }).limit(20);
 
     if(!allPosts) {
         return res.json({ message: 'Error finding posts!' });
