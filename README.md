@@ -20,6 +20,8 @@ I created the React Blog to practice building a full stack application from scra
 - [Google API Client Library (Node.js version)](https://developers.google.com/identity/sign-in/web/backend-auth)
 - [Google Sign-In (OAuth 2.0)](https://developers.google.com/identity/sign-in/web/sign-in)
 
+React Blog is fully functional in development and will be deployed shortly! Keep checking back to look for the deployed link.
+
 ## Table of Contents
 
 - [Installation](#installation)
