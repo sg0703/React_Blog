@@ -30,7 +30,7 @@ To try out your own version of this project, download the source code and set up
 
 Be sure to install and run both the backend API and the React dev server.
 
-You will need to create a Google Developer account and register in order to get an API key. There is a link above to developer resources for the Google Sign-In API. It's very detailed and helpful, so check it out.
+You will need to create a Google Developer account and register in order to get an API key. There is a link below to developer resources for the Google Sign-In API. It's very detailed and helpful, so check it out.
 
 ## Usage
 
