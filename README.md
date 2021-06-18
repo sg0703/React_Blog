@@ -4,11 +4,16 @@
 
 ## Description
 
-React Blog is a very basic blog that I am building to practice with the MERN stack and Redux. It will use OAuth to allow Google users to login using their Google credentials. Users can create blog posts that will display to the main page.
+React Blog is a full stack Mongo, Express, React and Node (MERN) application that allows users to login with their Google accounts and post blog posts to a communal homepage. The homepage displays the most recent 20 blog posts from all users.
 
-There will be a user page where users can see their post history. Users will retain control over their own posts with edit and delete functionality.
+This app uses the following libraries and services, in addition to the basic MERN stack:
 
-This app will use React, React Router, Redux and OAuth for the client side. I am also building the API, which will use Node, Express, and MongoDB Atlas to store data.
+- Redux
+- MongoDB Atlas
+- Mongoose
+- Lodash
+- Google API Client Library (Node.js version) [more here](https://developers.google.com/identity/sign-in/web/backend-auth)
+- Google Sign-In (OAuth 2.0) [more here](https://developers.google.com/identity/sign-in/web/sign-in)
 
 ## Table of Contents
 
@@ -22,15 +27,17 @@ This app will use React, React Router, Redux and OAuth for the client side. I am
 
 ## Installation
 
-The project is currently under development. Keep checking back for updates, and for the announcement when it is complete.
+To try out your own version of this project, download the source code and set up your Mongo server. You can either develop locally or use MongoDB Atlas.
+
+Be sure to install and run both the backend API and the React dev server.
+
+You will need to create a Google Developer account and register in order to get an API key. There is a link above to developer resources for the Google Sign-In API. It's very detailed and helpful, so check it out.
 
 ## Usage
 
-At present the app is in development. Once it is launched, users will be able to log in and click "Create" in the navbar. A form will pop up with a title and post field. When the user submits the form, they will be redirected to their own list of posts, which will include the post just submitted.
+Users click the "Sign In" Google button. Once logged in, users can navigate to the "Your Posts" section to view all of their past posts. They can edit and delete their own past posts.
 
-Users can see their post history and will also see delete and edit buttons next to each post. Users retain control over their content.
-
-The main page will display the most recent posts submitted by users.
+To write a new post, just click "Create"! The app is working and will be deployed shortly. Check back for a link to the deployed project.
 
 ## License
 
