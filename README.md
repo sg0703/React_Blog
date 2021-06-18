@@ -8,7 +8,7 @@ React Blog is a full stack Mongo, Express, React and Node (MERN) application tha
 
 Key API endpoints are secured by using token verification with the Google API Client Library. Some GET routes are intentionally left open and will be documented in the near future.
 
-This app uses the following libraries, services, and dev tools in addition to the basic MERN stack:
+I created the React Blog to practice building a full stack application from scratch. This app uses the following libraries, services, and dev tools in addition to the basic MERN stack:
 
 - [Redux](https://www.npmjs.com/package/redux)
 - [React-Redux](https://www.npmjs.com/package/react-redux)
