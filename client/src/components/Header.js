@@ -21,6 +21,9 @@ const Header = ({isSignedIn}) => {
     }
 
     return(
+        <>
+        <div class="ui inverted vertical masthead center aligned segment">
+        <a href="https://samgates.io/">SamGates.io</a> - React Blog w/ Google Auth!</div>
         <div className="ui secondary pointing menu">
             <Link to="/" className="item">
                 Home
@@ -30,6 +33,7 @@ const Header = ({isSignedIn}) => {
             <GoogleLogin />
         </div>
         </div>
+        </>
     );
 }
 

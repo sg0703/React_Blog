@@ -22,7 +22,7 @@ class UserPosts extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
+    return state.auth.userInfo === null ? {} : {
         posts: Object.values(state.posts),
         userEmail: state.auth.userInfo.userEmail
     }
