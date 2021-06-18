@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// for when i set up the API 
+// create instance of AXIOS that connects to API root address 
 export default axios.create({ 
-    baseURL: 'http://localhost:3001/post/'
+    baseURL: process.env.REACT_APP_baseURL
  });

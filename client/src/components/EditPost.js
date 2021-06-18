@@ -53,7 +53,7 @@ const EditPost = (props) => {
                 onChange={(e) => setContent(e.target.value)}
             />
             {renderError()}
-            <Link to="/posts" className="ui button">Back</Link>
+            <Link to="/posts" className="ui button" replace>Back</Link>
             <button className="ui button" onClick={onSubmit}>Update</button>
         </form>
         </div>

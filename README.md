@@ -8,7 +8,9 @@ React Blog is a full stack Mongo, Express, React and Node (MERN) application tha
 
 Key API endpoints are secured by using token verification with the Google API Client Library. Some GET routes are intentionally left open and will be documented in the near future.
 
-I created the React Blog to practice building a full stack application from scratch. This app uses the following libraries, services, and dev tools in addition to the basic MERN stack:
+At this time, only Google users can log in and post content. This app was built primarily to practice with Google's OAuth Sign-In protocol.
+
+This app uses the following libraries, services, and dev tools in addition to the basic MERN stack:
 
 - [Redux](https://www.npmjs.com/package/redux)
 - [React-Redux](https://www.npmjs.com/package/react-redux)
@@ -21,6 +23,14 @@ I created the React Blog to practice building a full stack application from scra
 - [Google Sign-In (OAuth 2.0)](https://developers.google.com/identity/sign-in/web/sign-in)
 
 React Blog is fully functional in development and will be deployed shortly! Keep checking back to look for the deployed link.
+
+Future goals include:
+
+- Enabling comments
+- Ability to "like" posts
+- Viewing single posts on a separate page
+- Building a user database
+- Enabling registration / sign-in outside of the Google network
 
 ## Table of Contents
 

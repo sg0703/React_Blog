@@ -1,3 +1,5 @@
+// auth reducer
+
 const INITIAL_STATE ={
     isSignedIn: null,
     userInfo: {}

@@ -5,23 +5,22 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // set up port
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 // initialize server
 const app = express();
 
-// enable cors?
+// enable cors to prevent errors 
 app.use(cors());
 
 // make sure we can use JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 // send all traffic to controllers files to route it appropriately
 app.use(require('./routes'));
 
-// try connecting to DB, if it succeeds start server, else display error message
+// try connecting to Mongo DB Atlas, if it succeeds start server, else display error message
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -29,7 +28,6 @@ mongoose
         })
     .then(() => {
         console.log('Connected to MONGO DB ATLAS...')
-
         app.listen(PORT, () => {
             console.log(`App running on port ${PORT}!`);
         })

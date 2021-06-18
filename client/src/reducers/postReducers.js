@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/no-anonymous-default-export
+// post reducer
+
 import _ from 'lodash';
 
 // eslint-disable-next-line import/no-anonymous-default-export

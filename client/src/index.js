@@ -7,7 +7,10 @@ import reduxThunk from 'redux-thunk';
 import App from './components/App';
 import reducers from './reducers';
 
+// this enables redux devtools to work
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// set up redux store
 const store = createStore(reducers,
     composeEnhancers(applyMiddleware(reduxThunk)));
 

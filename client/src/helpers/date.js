@@ -1,3 +1,5 @@
+// helper function i wrote to convert timestamps
+
 export const formatDate = (timestamp) => {
     var date = new Date(timestamp);
     var month = date.getMonth() + 1;

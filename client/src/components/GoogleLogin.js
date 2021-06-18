@@ -7,7 +7,7 @@ class GoogleLogin extends React.Component {
         // load up google api in background, set up listener, link to state
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({ 
-                clientId: '1034365235471-k6j8d5e8u4hhvb0oq832fogl3m1mdg6i.apps.googleusercontent.com',
+                clientId: process.env.REACT_APP_clientId,
                 scope: 'email'
              })
              .then(() => {
@@ -23,7 +23,9 @@ class GoogleLogin extends React.Component {
         });
     }
 
+    // this will be called if auth state changes (see above)
     onAuthChange = (isSignedIn) => {
+        // if user signed in, do the following
         if(isSignedIn) {
             // create object with all of users info
             const userInfo = {
@@ -33,7 +35,7 @@ class GoogleLogin extends React.Component {
                 userActualName: this.auth.currentUser.get().getBasicProfile().getName()
             }
             
-            // send info to redux store
+            // trigger signIn action creator/send info to REDUX store
             this.props.signIn(userInfo);
         }
         else {
@@ -41,6 +43,7 @@ class GoogleLogin extends React.Component {
         }
     }
 
+    // this helper method displays sign in / sign out Google button
     renderButton = () => {
         if(this.props.isSignedIn === null) {
             return null;
@@ -68,6 +71,7 @@ class GoogleLogin extends React.Component {
     }
 }
 
+// send auth status from store to this component as prop
 const mapStateToProps = (state) => {
     return { 
         isSignedIn: state.auth.isSignedIn,
