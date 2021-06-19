@@ -6,11 +6,11 @@ import _ from 'lodash';
 export default (state = {}, action) => {
     switch(action.type) {
         case 'FETCH_POSTS':
-            return {...state, ..._.mapKeys(action.payload, '_id')};  
+            return {..._.mapKeys(action.payload, '_id'), ...state };  
         case 'FETCH_POST':
             return {...state, [action.payload._id]: action.payload};  
         case 'EDIT_POST':
-            return { ...state, [action.payload._id]: action.payload };
+            return { [action.payload._id]: action.payload, ...state} ;
         case 'WRITE_POST':
             return { ...state };
         case 'DELETE_POST':
